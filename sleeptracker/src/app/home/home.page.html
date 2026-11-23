@@ -1,20 +1,35 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Blank
+      Sleep Tracker
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content class="ion-padding">
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Last Night's Sleep</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+
+      <h1>{{ latestSleep.summaryString() }}</h1>
+
+      <p>{{ latestSleep.dateString() }}</p>
+
+      <p>
+        Bedtime:
+        {{ latestSleep.getSleepStart() | date:'shortTime' }}
+      </p>
+
+      <p>
+        Wake Up:
+        {{ latestSleep.getSleepEnd() | date:'shortTime' }}
+      </p>
+
+    </ion-card-content>
+  </ion-card>
+
 </ion-content>
