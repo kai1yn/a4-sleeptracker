@@ -1,0 +1,76 @@
+.page-container {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+h2 {
+  font-size: 25px;
+  font-weight: bold;
+  color: #ffffff;
+  margin-top: 20px;
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  color: #ffffff;
+  font-size: 15px;
+  line-height: 1.5;
+  margin-bottom: 25px;
+}
+
+ion-card {
+  margin: 0;
+  border-radius: 16px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+ion-card-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+ion-item {
+  --padding-start: 0;
+  --inner-padding-end: 0;
+  margin-bottom: 15px;
+}
+
+ion-label {
+  font-weight: 600;
+}
+
+.duration-box {
+  background: #f0f5ff;
+  border-radius: 12px;
+  padding: 18px;
+  margin-top: 25px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.duration-box h3 {
+  font-size: 16px;
+  color: #555;
+  margin: 0 0 10px;
+}
+
+.duration-box p {
+  font-size: 22px;
+  font-weight: bold;
+  color: var(--ion-color-primary);
+  margin: 0;
+}
+
+.save-button {
+  margin-top: 15px;
+  --border-radius: 10px;
+  --background: var(--ion-color-primary);
+  font-weight: bold;
+}
+
+.message {
+  font-size: 14px;
+  margin: 12px 0;
+  color: white;
+}

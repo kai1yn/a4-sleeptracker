@@ -1,13 +1,99 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>log-sleep</ion-title>
+    <ion-title>Log Sleep</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">log-sleep</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content class="ion-padding">
+
+  <div class="page-container">
+
+    <h2>Record Your Sleep</h2>
+
+    <p class="subtitle">
+      Select the date you went to sleep, your bedtime, and wake-up time.
+    </p>
+
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Sleep Information</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+
+        <!-- Sleep Date -->
+        <ion-item>
+          <ion-label position="stacked">
+            Date You Went to Sleep
+          </ion-label>
+
+          <ion-input
+            type="date"
+            [(ngModel)]="sleepDate"
+            name="sleepDate">
+          </ion-input>
+        </ion-item>
+
+        <!-- Bedtime -->
+        <ion-item>
+          <ion-label position="stacked">
+            Bedtime
+          </ion-label>
+
+          <ion-input
+            type="time"
+            [(ngModel)]="bedtime"
+            name="bedtime">
+          </ion-input>
+        </ion-item>
+
+        <!-- Wake-up Time -->
+        <ion-item>
+          <ion-label position="stacked">
+            Wake-up Time
+          </ion-label>
+
+          <ion-input
+            type="time"
+            [(ngModel)]="wakeUpTime"
+            name="wakeUpTime">
+          </ion-input>
+        </ion-item>
+
+        <!-- Sleep Duration -->
+        <div class="duration-box">
+          <h3>Total Sleep</h3>
+          <p>{{ sleepDuration }}</p>
+        </div>
+
+        <!-- Error Message -->
+        <ion-text color="white" *ngIf="errorMessage">
+          <p class="message">{{ errorMessage }}</p>
+        </ion-text>
+
+        <!-- Success Message -->
+        <ion-text color="success" *ngIf="successMessage">
+          <p class="message">{{ successMessage }}</p>
+        </ion-text>
+
+        <!-- Save Button -->
+        <ion-button
+          expand="block"
+          class="save-button"
+          (click)="saveSleep()">
+          Save Sleep
+        </ion-button>
+
+      </ion-card-content>
+    </ion-card>
+
+  </div>
+<ion-toast
+  [isOpen]="toastOpen"
+  [message]="toastMessage"
+  duration="3000"
+  position="top"
+  color="primary"
+  (didDismiss)="toastOpen = false">
+</ion-toast>
 </ion-content>
