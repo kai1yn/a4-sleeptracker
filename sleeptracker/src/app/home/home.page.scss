@@ -47,6 +47,11 @@ h1 {
   font-weight: bold;
   color: var(--ion-color-primary);
 }
+h1.sleepiness-score {
+  font-size: 32px;
+  font-weight: bold;
+  color: var(--ion-color-secondary);
+}
 
 /* Navigation buttons */
 .navigation-buttons {
@@ -159,4 +164,10 @@ ion-card:first-of-type {
   justify-content: space-between;
   padding-top: 10px;
   font-size: 15px;
+}
+.sleepiness-score {
+  font-size: 32px !important;
+  font-weight: bold !important;
+  color: var(--ion-color-secondary) !important;
+  margin: 10px 0;
 }

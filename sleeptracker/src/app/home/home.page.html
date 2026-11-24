@@ -43,57 +43,8 @@
 </div>
 
 <ion-content class="ion-padding">
-  <ion-card>
 
-    <ion-card-header>
-      <ion-card-title>Last 7 Days of Sleep</ion-card-title>
-    </ion-card-header>
-
-    <ion-card-content>
-
-      //bar graph
-      <div
-        *ngFor="let day of lastSevenDays"
-        class="horizontal-chart">
-
-        <span class="chart-label">
-          {{ day.day }}
-        </span>
-
-        <div class="horizontal-bar-container">
-
-          <div
-            class="horizontal-sleep-bar"
-            [style.width.%]="getBarHeight(day.duration)">
-          </div>
-
-        </div>
-
-        <span class="chart-time">
-          {{ day.logged ? day.hours + 'h ' + day.minutes + 'm' : '--' }}
-        </span>
-
-      </div>
-
-      <hr>
-
-      //weekly average and nights logged
-      <div class="weekly-average">
-        <strong>Average Sleep</strong>
-        <strong>{{ averageSleep }}</strong>
-      </div>
-
-      <div class="weekly-average">
-        <strong>Nights Logged</strong>
-        <strong>{{ nightsLogged }} / 7</strong>
-      </div>
-
-    </ion-card-content>
-
-  </ion-card>
-
-
-  //last night's sleep
+  <!-- LAST NIGHT'S SLEEP -->
   <ion-card>
 
     <ion-card-header>
@@ -123,6 +74,91 @@
       <ng-template #noSleep>
         <p>No sleep has been logged yet.</p>
       </ng-template>
+
+    </ion-card-content>
+
+  </ion-card>
+
+
+  <!-- LATEST SLEEPINESS SCORE -->
+  <ion-card>
+
+    <ion-card-header>
+      <ion-card-title>Latest Sleepiness Score</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+
+      <div *ngIf="latestSleepiness; else noSleepiness">
+
+        <div class="sleepiness-score">
+          {{ latestSleepiness.summaryString().split(':')[0] }} / 7
+        </div>
+
+        <p>
+          {{ latestSleepiness.summaryString().split(': ').slice(1).join(': ') }}
+        </p>
+
+        <p>
+          {{ latestSleepiness.dateString() }}
+        </p>
+
+      </div>
+
+      <ng-template #noSleepiness>
+        <p>No sleepiness scores have been logged yet.</p>
+      </ng-template>
+
+    </ion-card-content>
+
+  </ion-card>
+
+
+  <!-- LAST 7 DAYS OF SLEEP -->
+  <ion-card>
+
+    <ion-card-header>
+      <ion-card-title>Last 7 Days of Sleep</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+
+      <!-- HORIZONTAL BAR GRAPH -->
+      <div
+        *ngFor="let day of lastSevenDays"
+        class="horizontal-chart">
+
+        <span class="chart-label">
+          {{ day.day }}
+        </span>
+
+        <div class="horizontal-bar-container">
+
+          <div
+            class="horizontal-sleep-bar"
+            [style.width.%]="getBarHeight(day.duration)">
+          </div>
+
+        </div>
+
+        <span class="chart-time">
+          {{ day.logged ? day.hours + 'h ' + day.minutes + 'm' : '--' }}
+        </span>
+
+      </div>
+
+      <hr>
+
+      <!-- WEEKLY SUMMARY -->
+      <div class="weekly-average">
+        <strong>Average Sleep</strong>
+        <strong>{{ averageSleep }}</strong>
+      </div>
+
+      <div class="weekly-average">
+        <strong>Nights Logged</strong>
+        <strong>{{ nightsLogged }} / 7</strong>
+      </div>
 
     </ion-card-content>
 

@@ -59,9 +59,16 @@ export class HomePage {
   }
 
   get latestSleep() {
-    const sleepData = SleepService.AllOvernightData;
-    return sleepData[sleepData.length - 1];
-  }
+	const sleepData = SleepService.AllOvernightData;
+
+	if (sleepData.length === 0) {
+		return undefined;
+	}
+
+	return [...sleepData].sort((a, b) =>
+		b.getSleepStart().getTime() - a.getSleepStart().getTime()
+	)[0];
+		}
   get lastSevenDays() {
   const days = [];
 
@@ -137,4 +144,8 @@ export class HomePage {
 		a.getSleepStart().getTime()
 		);
 	}
+	get latestSleepiness() {
+		const sleepinessData = SleepService.AllSleepinessData;
+		return sleepinessData[sleepinessData.length - 1];
+	}	
 }
