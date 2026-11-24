@@ -97,3 +97,13 @@ ion-card-title {
   --background: var(--ion-color-secondary);
   font-weight: bold;
 }
+
+ion-buttons[slot="start"] {
+  padding-left: 12px;
+}
+
+ion-buttons ion-button {
+  --padding-left: 10px;
+  --padding-top: 26px;
+  --padding-bottom: 0px;
+}

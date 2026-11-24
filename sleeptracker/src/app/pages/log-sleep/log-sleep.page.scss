@@ -74,3 +74,12 @@ ion-label {
   margin: 12px 0;
   color: white;
 }
+ion-buttons[slot="start"] {
+  padding-left: 12px;
+}
+
+ion-buttons ion-button {
+  --padding-left: 10px;
+  --padding-top: 26px;
+  --padding-bottom: 0px;
+}

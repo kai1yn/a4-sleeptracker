@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { RouterLink } from '@angular/router';
 
 import {
   IonContent,
@@ -15,8 +16,13 @@ import {
   IonSelect,
   IonSelectOption,
   IonText,
-  IonToast
+  IonToast,
+  IonButtons,
+  IonIcon
 } from '@ionic/angular/standalone';
+
+import { addIcons } from 'ionicons';
+import { homeOutline } from 'ionicons/icons';
 
 import { SleepService } from '../../services/sleep.service';
 import { StanfordSleepinessData } from '../../data/stanford-sleepiness-data';
@@ -29,6 +35,7 @@ import { StanfordSleepinessData } from '../../data/stanford-sleepiness-data';
   imports: [
     CommonModule,
     FormsModule,
+    RouterLink,
     IonContent,
     IonHeader,
     IonTitle,
@@ -41,7 +48,9 @@ import { StanfordSleepinessData } from '../../data/stanford-sleepiness-data';
     IonSelect,
     IonSelectOption,
     IonText,
-    IonToast
+    IonToast,
+    IonButtons,
+    IonIcon
   ]
 })
 export class LogSleepinessPage {
@@ -52,7 +61,11 @@ export class LogSleepinessPage {
   toastOpen: boolean = false;
   toastMessage: string = '';
 
-  constructor(private sleepService: SleepService) {}
+  constructor(private sleepService: SleepService) {
+    addIcons({
+      homeOutline
+    });
+  }
 
   get selectedDescription(): string {
     if (this.sleepinessLevel === null) {
@@ -62,7 +75,7 @@ export class LogSleepinessPage {
     return StanfordSleepinessData.ScaleValues[this.sleepinessLevel] || '';
   }
 
-  saveSleepiness() {
+  async saveSleepiness() {
     this.errorMessage = '';
 
     if (
@@ -78,9 +91,9 @@ export class LogSleepinessPage {
       this.sleepinessLevel
     );
 
-    this.sleepService.logSleepinessData(sleepinessEntry);
+    await this.sleepService.logSleepinessData(sleepinessEntry);
 
-    this.toastMessage = '✓ Sleepiness logged successfully!';
+    this.toastMessage = 'Sleepiness logged successfully!';
     this.toastOpen = true;
 
     this.sleepinessLevel = null;

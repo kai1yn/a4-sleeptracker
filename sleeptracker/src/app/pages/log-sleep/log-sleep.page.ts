@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { RouterLink } from '@angular/router';
 
 import {
   IonContent,
@@ -16,8 +17,13 @@ import {
   IonItem,
   IonLabel,
   IonText,
-  IonToast
+  IonToast,
+  IonButtons,
+  IonIcon
 } from '@ionic/angular/standalone';
+
+import { addIcons } from 'ionicons';
+import { homeOutline } from 'ionicons/icons';
 
 import { SleepService } from '../../services/sleep.service';
 import { OvernightSleepData } from '../../data/overnight-sleep-data';
@@ -30,6 +36,7 @@ import { OvernightSleepData } from '../../data/overnight-sleep-data';
   imports: [
     CommonModule,
     FormsModule,
+    RouterLink,
     IonContent,
     IonHeader,
     IonTitle,
@@ -43,7 +50,9 @@ import { OvernightSleepData } from '../../data/overnight-sleep-data';
     IonItem,
     IonLabel,
     IonText,
-    IonToast
+    IonToast,
+    IonButtons,
+    IonIcon
   ]
 })
 export class LogSleepPage {
@@ -57,7 +66,11 @@ export class LogSleepPage {
   errorMessage: string = '';
   successMessage: string = '';
 
-  constructor(private sleepService: SleepService) {}
+  constructor(private sleepService: SleepService) {
+    addIcons({
+      homeOutline
+    });
+  }
 
   getTodayDate(): string {
     const today = new Date();
@@ -95,7 +108,7 @@ export class LogSleepPage {
     return `${hours} hours, ${minutes} minutes`;
   }
 
-  saveSleep() {
+  async saveSleep() {
     this.errorMessage = '';
     this.successMessage = '';
 
@@ -123,7 +136,7 @@ export class LogSleepPage {
 
     const sleepEntry = new OvernightSleepData(start, end);
 
-    this.sleepService.logOvernightData(sleepEntry);
+    await this.sleepService.logOvernightData(sleepEntry);
 
     this.toastMessage = 'Your sleep has been logged!';
     this.toastOpen = true;
