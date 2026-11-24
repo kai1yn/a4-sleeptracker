@@ -171,3 +171,17 @@ ion-card:first-of-type {
   color: var(--ion-color-secondary) !important;
   margin: 10px 0;
 }
+
+.week-navigation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 160px;
+  padding-top: 20px;
+  width: 100%;
+}
+
+.week-navigation ion-button {
+  --color: var(--ion-color-primary);
+  margin: 0;
+}

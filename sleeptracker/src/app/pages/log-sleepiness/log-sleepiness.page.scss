@@ -107,3 +107,6 @@ ion-buttons ion-button {
   --padding-top: 26px;
   --padding-bottom: 0px;
 }
+.save-button::part(native) {
+  outline: none;
+}

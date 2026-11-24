@@ -1,5 +1,4 @@
 <ion-header [translucent]="true">
-
 </ion-header>
 
 <div class="navigation-buttons">
@@ -110,16 +109,53 @@
   </ion-card>
 
 
-  <!-- LAST 7 DAYS OF SLEEP -->
+  <!-- WEEKLY SLEEP HISTORY -->
   <ion-card>
+<div class="week-navigation">
 
+        <ion-button
+          fill="clear"
+          size="small"
+          (click)="previousWeek()">
+
+          <ion-icon
+            name="chevron-back-outline"
+            slot="start">
+          </ion-icon>
+
+          Previous
+
+        </ion-button>
+
+        <ion-button
+          fill="clear"
+          size="small"
+          [disabled]="weekOffset === 0"
+          (click)="nextWeek()">
+
+          Next
+
+          <ion-icon
+            name="chevron-forward-outline"
+            slot="end">
+          </ion-icon>
+
+        </ion-button>
+
+      </div>
     <ion-card-header>
-      <ion-card-title>Last 7 Days of Sleep</ion-card-title>
+      <ion-card-title>Sleep History</ion-card-title>
     </ion-card-header>
 
     <ion-card-content>
 
-      <!-- HORIZONTAL BAR GRAPH -->
+
+      
+
+      <p class="week-label">
+        {{ weekLabel }}
+      </p>
+
       <div
         *ngFor="let day of lastSevenDays"
         class="horizontal-chart">
@@ -149,6 +185,11 @@
       <div class="weekly-average">
         <strong>Average Sleep</strong>
         <strong>{{ averageSleep }}</strong>
+      </div>
+
+      <div class="weekly-average">
+        <strong>Average Sleepiness</strong>
+        <strong>{{ averageSleepiness }}</strong>
       </div>
 
       <div class="weekly-average">
