@@ -1,0 +1,82 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Log Sleepiness</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <div class="page-container">
+
+    <h2>How Sleepy Are You?</h2>
+
+    <p class="subtitle">
+      Record how alert or sleepy you feel right now.
+    </p>
+
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>
+          Stanford Sleepiness Scale
+        </ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+
+        <p class="instruction">
+          Select the number that best describes how you feel.
+        </p>
+
+        <ion-select
+          [(ngModel)]="sleepinessLevel"
+          interface="popover"
+          placeholder="Choose a rating"
+          label="Sleepiness Rating"
+          label-placement="stacked"
+          class="sleepiness-select">
+
+          <ion-select-option [value]="1">1 - Very alert</ion-select-option>
+          <ion-select-option [value]="2">2 - Functioning well</ion-select-option>
+          <ion-select-option [value]="3">3 - Awake and relaxed</ion-select-option>
+          <ion-select-option [value]="4">4 - Somewhat foggy</ion-select-option>
+          <ion-select-option [value]="5">5 - Foggy and slowed down</ion-select-option>
+          <ion-select-option [value]="6">6 - Sleepy and fighting sleep</ion-select-option>
+          <ion-select-option [value]="7">7 - Almost asleep</ion-select-option>
+
+        </ion-select>
+
+        <div class="description-box">
+          <h3>What does your rating mean?</h3>
+          <p>{{ selectedDescription }}</p>
+        </div>
+
+        <div class="time-note">
+          Your current date and time will be recorded automatically.
+        </div>
+
+        <ion-text color="danger" *ngIf="errorMessage">
+          <p class="message">{{ errorMessage }}</p>
+        </ion-text>
+
+        <ion-button
+          expand="block"
+          class="save-button"
+          (click)="saveSleepiness()">
+          Save Sleepiness
+        </ion-button>
+
+      </ion-card-content>
+    </ion-card>
+
+  </div>
+
+  <ion-toast
+    [isOpen]="toastOpen"
+    [message]="toastMessage"
+    duration="3000"
+    position="top"
+    color="primary"
+    (didDismiss)="toastOpen = false">
+  </ion-toast>
+
+</ion-content>

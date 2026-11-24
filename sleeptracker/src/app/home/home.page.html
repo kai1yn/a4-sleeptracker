@@ -5,7 +5,41 @@
     </ion-title>
   </ion-toolbar>
 </ion-header>
+<div class="navigation-buttons">
 
+  <ion-button
+    expand="block"
+    class="sleep-nav-button"
+    routerLink="/log-sleep">
+
+    <ion-icon name="moon-outline" slot="start"></ion-icon>
+
+    <div class="button-text">
+      <strong>Log Sleep</strong>
+      <span>Record your overnight sleep</span>
+    </div>
+
+    <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
+
+  </ion-button>
+
+  <ion-button
+    expand="block"
+    class="sleepiness-nav-button"
+    routerLink="/log-sleepiness">
+
+    <ion-icon name="eye-outline" slot="start"></ion-icon>
+
+    <div class="button-text">
+      <strong>Log Sleepiness</strong>
+      <span>Track how alert you feel</span>
+    </div>
+
+    <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
+
+  </ion-button>
+
+</div>
 <ion-content class="ion-padding">
 
   <ion-card>

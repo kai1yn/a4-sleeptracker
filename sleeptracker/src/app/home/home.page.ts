@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
-// { IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/angular/standalone';
-import { SleepService } from '../services/sleep.service';
-import { SleepData } from '../data/sleep-data';
-import { OvernightSleepData } from '../data/overnight-sleep-data';
-import { StanfordSleepinessData } from '../data/stanford-sleepiness-data';
 import { DatePipe } from '@angular/common';
+import { RouterLink } from '@angular/router';
+
+import { SleepService } from '../services/sleep.service';
+
 import {
+  IonButton,
+  IonIcon,
   IonHeader,
   IonToolbar,
   IonTitle,
@@ -15,28 +16,50 @@ import {
   IonCardTitle,
   IonCardContent,
 } from '@ionic/angular/standalone';
+
+import { addIcons } from 'ionicons';
+
+import {
+  moonOutline,
+  eyeOutline,
+  chevronForwardOutline
+} from 'ionicons/icons';
+
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
   imports: [
-  IonHeader,
-  IonToolbar,
-  IonTitle,
-  IonContent,
-  IonCard,
-  IonCardHeader,
-  IonCardTitle,
-  IonCardContent,
-  DatePipe
-],
+    IonHeader,
+    IonToolbar,
+    IonTitle,
+    IonContent,
+    IonCard,
+    IonCardHeader,
+    IonCardTitle,
+    IonCardContent,
+    DatePipe,
+    RouterLink,
+    IonButton,
+    IonIcon
+  ],
 })
+
 export class HomePage {
 
-  constructor(public sleepService: SleepService) {}
+  constructor(public sleepService: SleepService) {
 
-get latestSleep() {
-  const sleepData = SleepService.AllOvernightData;
-  return sleepData[sleepData.length - 1];
-}
+    addIcons({
+      'moon-outline': moonOutline,
+      'eye-outline': eyeOutline,
+      'chevron-forward-outline': chevronForwardOutline
+    });
+
+  }
+
+  get latestSleep() {
+    const sleepData = SleepService.AllOvernightData;
+    return sleepData[sleepData.length - 1];
+  }
+
 }

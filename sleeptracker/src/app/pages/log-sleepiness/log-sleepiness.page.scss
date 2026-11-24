@@ -1,0 +1,99 @@
+.page-container {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+h2 {
+  font-size: 25px;
+  font-weight: bold;
+  color: #FFFFFF;
+  margin-top: 20px;
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  color: #D1D5E5;
+  font-size: 15px;
+  line-height: 1.5;
+  margin-bottom: 25px;
+}
+
+ion-card {
+  margin: 0;
+  border-radius: 16px;
+  --background: #1D2035;
+  color: #FFFFFF;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+ion-card-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: #FFFFFF;
+}
+
+.instruction {
+  color: #D1D5E5;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.sleepiness-select {
+  width: 100%;
+  color: #FFFFFF;
+   border: 1px solid #51406B;
+  --color: #FFFFFF;
+  --placeholder-color: #A5A8BC;
+  --background: #25213D;
+  --border-color: #51406B;
+  --border-radius: 12px;
+  --padding-start: 14px;
+  --padding-end: 14px;
+  margin-bottom: 20px;
+    border: 1px solid #51406B;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.description-box {
+  background: #25213D;
+  border: 1px solid #51406B;
+  border-radius: 12px;
+  padding: 18px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.description-box h3 {
+  font-size: 16px;
+  font-weight: bold;
+  
+  color: var(--ion-color-secondary);
+  margin-top: 0;
+}
+
+.description-box p {
+  color: #FFFFFF;
+  font-size: 14px;
+  line-height: 1.5;
+  margin-bottom: 0;
+  
+}
+
+.time-note {
+  color: #B8B8CC;
+  font-size: 13px;
+  margin: 15px 0;
+}
+
+.message {
+  color: #FFFFFF !important;
+  font-size: 14px;
+}
+
+.save-button {
+  margin-top: 15px;
+  --border-radius: 10px;
+  --background: var(--ion-color-secondary);
+  font-weight: bold;
+}
